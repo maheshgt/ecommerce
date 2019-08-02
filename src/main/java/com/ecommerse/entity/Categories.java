@@ -1,6 +1,5 @@
 package com.ecommerse.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,8 +24,7 @@ public class Categories {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int categoryId;
 	private String categoryName;
-	@Column(columnDefinition = "int default 0")
-	private int count;
+	
 	
 	
 

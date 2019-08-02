@@ -1,3 +1,4 @@
+
 package com.ecommerse.service;
 
 import java.util.List;
@@ -17,5 +18,17 @@ public class ProductServiceImpl implements ProductService{
 	public List<Products> getAll() {
 		return productRepo.findAll();
 	}
+	@Override
+	public Products getById(int id) {
+		Products p = productRepo.findByProductId(id);
+		int c = p.getCount();
+		p.setCount(++c);
+		Products pro= productRepo.save(p);
+		return pro;
+		
+		
+	}
+	
+	
 
 }

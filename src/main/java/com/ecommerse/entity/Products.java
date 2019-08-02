@@ -3,6 +3,7 @@ package com.ecommerse.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,14 +17,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="Products")
+@Table(name = "Products")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 
 public class Products {
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,8 +32,9 @@ public class Products {
 	private float productPrice;
 	@Column(columnDefinition = "int default 0")
 	private int count;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="category_Id")
+
+	@JoinColumn(name = "category_Id")
 	private Categories categories;
 }

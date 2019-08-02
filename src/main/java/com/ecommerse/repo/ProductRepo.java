@@ -8,4 +8,6 @@ import com.ecommerse.entity.Products;
 @Repository
 public interface ProductRepo extends JpaRepository<Products, Integer>{
 
+	Products findByProductId(int id);
+
 }

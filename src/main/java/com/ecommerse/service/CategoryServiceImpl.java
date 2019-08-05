@@ -33,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public Categories getById(int id) {
 		
 		Categories cat = categoryRepo.findByCategoryId(id);
-		AnalyticInfo ai = new AnalyticInfo();
+		AnalyticInfo ai = (AnalyticInfo) analyticRepo.findByCategoryId(id);
 		int count = ai.getCategoryCount();
 		ai.setCategoryCount(++count);
 		ai.setCategories(cat);

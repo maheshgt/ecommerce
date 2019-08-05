@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService {
 	public Products getById(int id) {
 		Products pro = productRepo.findByProductId(id);
 		Categories id1 = pro.getCategories();	
-		AnalyticInfo ai = analyticRepo.findByProductId(id);
+		AnalyticInfo ai = (AnalyticInfo) analyticRepo.findByProductId(id);
 		int count = ai.getProductCount();
 		ai.setProductCount(++count);
 		ai.setProducts(pro);

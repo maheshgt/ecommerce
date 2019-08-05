@@ -1,14 +1,27 @@
 package com.ecommerse.repo;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.ecommerse.entity.AnalyticInfo;
 
-public interface AnalyticRepo extends JpaRepository<AnalyticInfo, Integer>{
+@Repository
+public interface AnalyticRepo extends JpaRepository<AnalyticInfo, Integer> {
 	
-	@Query("select a analytics where a.product-Id=:id")
-	public AnalyticInfo findByProductId(@Param("id") int id) ;
+	@Transactional
+	@Query(value="select * from ecommerse.analytics where product_id=?1", nativeQuery = true)
+	public AnalyticInfo findByProductId(int id);
+	
+	@Transactional
+	@Query(value="select * from ecommerse.analytics where category_id=?1", nativeQuery = true)
+	public AnalyticInfo findByCategoryId(int id);
+	
+	@Query(value="select * from ecommerse.analytics",nativeQuery = true)
+	public List<AnalyticInfo> findAll();
 
 }

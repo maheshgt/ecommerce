@@ -22,21 +22,24 @@ public class AnalyticInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int analyticId;
-	@Column(columnDefinition = "int default 0")
+	//@Column(columnDefinition = "int default 0")
 	private int productCount;
 	
-	@Column(columnDefinition = "int default 0")
-	private int categoryCount;
+	//@Column(columnDefinition = "int default 0")
+	private Integer categoryCount=null;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="UserId")
+	//@Column(columnDefinition = "int default 0")
 	UserEntity userEntity;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="CategoryId")
+	//@Column(columnDefinition = "int default 0")
 	Categories categories;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="ProductId")
+	//@Column(columnDefinition = "int default 0")
 	Products products;
 }

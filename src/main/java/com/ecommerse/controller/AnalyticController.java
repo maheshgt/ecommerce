@@ -3,6 +3,8 @@ package com.ecommerse.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +20,12 @@ public class AnalyticController {
 	AnalyticService analyticService;
 	
 	@GetMapping("/all")
-	public List<AnalyticInfo> getAll(){
-		return analyticService.getAll();
+	public ResponseEntity<List<AnalyticInfo>> getAll(){
+		return new ResponseEntity<>(analyticService.getAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping("analytic/{id}")
-	public AnalyticInfo getById(int id){
-		return analyticService.getById(id);
+	public ResponseEntity<AnalyticInfo> getById(int id){
+		return new ResponseEntity<>(analyticService.getById(id), HttpStatus.OK);
 	}
 }
